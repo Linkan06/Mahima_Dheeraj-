@@ -1,0 +1,113 @@
+/* ===== COLOURS: change these to retheme the whole site ===== */
+:root{
+  --ivory:#fffaf0; --cream:#f8efe0; --gold:#b8923a; --gold-l:#e6c77a;
+  --champ:#d9bc7e; --blush:#f4c9cf; --rose:#d98b9b; --ink:#5a4632;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Cormorant Garamond',Georgia,serif; font-size:19px; color:var(--ink);
+  background:
+    radial-gradient(circle at 15% 0,#fde8ea 0,transparent 45%),
+    radial-gradient(circle at 90% 100%,#f6e6c4 0,transparent 45%), var(--ivory);
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden;height:100svh}
+
+/* Gold shimmering text */
+.gold{
+  background:linear-gradient(100deg,#8f6f22,#e9d08e 35%,#b8923a 55%,#f0dc9f 80%,#8f6f22);
+  background-size:220% auto; -webkit-background-clip:text; background-clip:text;
+  color:transparent; -webkit-text-fill-color:transparent; animation:shine 7s linear infinite;
+}
+@keyframes shine{to{background-position:220% center}}
+.kicker,.role,.label,.eyebrow,.cue{font-family:'Cinzel',serif;letter-spacing:.26em;text-transform:uppercase}
+.kicker{font-size:.74rem;color:#7d5f1c}
+
+/* ===== Falling petals ===== */
+#petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.petal{position:absolute;top:-6vh;border-radius:70% 0 70% 0;background:var(--blush);
+  opacity:.7;animation:fall linear infinite}
+@keyframes fall{to{transform:translate3d(var(--x),112vh,0) rotate(560deg)}}
+
+/* ===== 1. Envelope ===== */
+#intro{
+  position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:1.5rem;text-align:center;padding:1rem;
+  background:radial-gradient(circle at 50% 40%,#fff7e8,#f7dfe0 75%);
+  transition:opacity 1s,visibility 1s;
+}
+#intro.leave{opacity:0;visibility:hidden}
+.tap{font-style:italic;font-size:1.15rem;color:#8a6a24;animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.env{
+  position:relative;width:min(86vw,380px);aspect-ratio:3/2;border:0;background:none;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;filter:drop-shadow(0 18px 28px rgba(120,80,40,.28));
+  margin:1.6rem 0 .6rem;
+}
+.env>span{position:absolute;display:block}
+.back{inset:0;background:linear-gradient(135deg,#fff6ea,#f6d9dc);border:2px solid var(--champ);border-radius:6px}
+.letter{left:7%;right:7%;top:6%;bottom:6%;background:var(--ivory);border:1px solid var(--champ);
+  border-radius:4px;z-index:1;display:grid;place-items:center;transition:transform 1s .55s ease}
+.script{font-family:'Great Vibes',cursive;font-size:clamp(1.5rem,7vw,2.2rem);color:var(--gold)}
+.front{inset:0;z-index:2;background:linear-gradient(160deg,#f9dfe1,#f2c1c8);border-radius:6px;
+  clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%)}
+.flap{left:0;top:0;width:100%;height:56%;z-index:3;background:linear-gradient(180deg,#eeb9c1,#fbe3e5);
+  clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;
+  transition:transform .9s ease,z-index 0s .45s}
+.seal{left:50%;top:56%;width:22%;aspect-ratio:1;transform:translate(-50%,-50%);z-index:4;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#f8e7ab,#b8923a);display:grid;place-items:center;
+  font:600 .8rem 'Cinzel',serif;color:#4d3407;box-shadow:0 3px 8px rgba(0,0,0,.3);transition:opacity .4s}
+.env.open .flap{transform:rotateX(180deg);z-index:0}
+.env.open .letter{transform:translateY(-58%)}
+.env.open .seal{opacity:0}
+
+/* ===== Sections ===== */
+section{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:5rem 1.6rem;overflow:hidden}
+.frame::before{content:"";position:absolute;inset:14px;border:1px solid var(--champ);border-radius:4px;
+  box-shadow:inset 0 0 0 5px var(--ivory),inset 0 0 0 6px rgba(217,188,126,.6);pointer-events:none}
+.fl{position:absolute;width:clamp(70px,22vw,120px);height:clamp(70px,22vw,120px);animation:sway 10s ease-in-out infinite;opacity:.95}
+.fl.tl{top:-8px;left:-8px}.fl.tr{top:-8px;right:-8px}.fl.bl{bottom:-8px;left:-8px}.fl.br{bottom:-8px;right:-8px}
+@keyframes sway{50%{transform:rotate(14deg) scale(1.07)}}
+
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity 1.2s var(--d,0s),transform 1.2s var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ===== 2. Radhe Radhe ===== */
+.radhe{gap:1.6rem;background:radial-gradient(circle at 50% 50%,rgba(255,243,196,.55),transparent 60%)}
+.hindi-script{font-family:'Kalam','Tiro Devanagari Hindi',serif;font-size:clamp(2.8rem,14vw,5.2rem);line-height:1.5}
+
+/* ===== 3. Ganesha ===== */
+.ganesh{gap:1.2rem}
+.ganesha{width:min(58vw,250px);height:auto;filter:drop-shadow(0 6px 14px rgba(184,146,58,.35));animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.mantra{font-family:'Tiro Devanagari Hindi','Noto Sans Devanagari',serif;display:flex;flex-direction:column;gap:1rem}
+.mantra h2{font-weight:400;font-size:clamp(1.7rem,7vw,2.3rem)}
+.mantra p{font-size:clamp(1.05rem,4.4vw,1.3rem);line-height:2}
+.mantra .label{font-size:.78rem;color:#7d5f1c;margin-top:.4rem}
+.cue{margin-top:1rem;font-size:.74rem;color:#7d5f1c;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.6rem 1rem}
+.cue span{font-size:1.6rem;animation:bounce 1.8s infinite}
+@keyframes bounce{50%{transform:translateY(7px)}}
+
+/* ===== 4. Couple ===== */
+.couple{gap:1.4rem}
+.eyebrow{font-size:clamp(.78rem,3.4vw,1rem);font-weight:600;color:#7d5f1c;line-height:1.9;max-width:20rem}
+.monogram{font-family:'Great Vibes',cursive;font-size:clamp(3rem,15vw,5rem);line-height:1.2}
+.people{display:grid;gap:1.2rem;width:100%;max-width:900px;align-items:center}
+.person{padding:1.2rem .6rem}
+.role{font-size:.78rem;color:var(--rose);font-weight:600}
+.name{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(1.8rem,8.4vw,2.6rem);margin:.5rem 0 .8rem;line-height:1.2}
+.parents{font-size:1.15rem;line-height:1.8;font-style:italic}
+.parents strong{font-style:normal;font-weight:600}
+.divider{display:flex;align-items:center;justify-content:center;gap:.8rem;color:var(--gold)}
+.divider i{display:block;width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+@media(min-width:760px){
+  .people{grid-template-columns:1fr auto 1fr}
+  .divider{flex-direction:column;height:220px}
+  .divider i{width:1px;height:90px;background:linear-gradient(transparent,var(--gold),transparent)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before{animation:none!important;transition-duration:.01s!important}
+  html{scroll-behavior:auto}
+}

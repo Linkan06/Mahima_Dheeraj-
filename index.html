@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mahima Weds Dheeraj</title>
-<meta name="theme-color" content="#fffaf0">
+<meta name="theme-color" content="#5c1426">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Kalam:wght@700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
@@ -27,18 +27,33 @@
 
 <div id="petals" aria-hidden="true"></div>
 
-<!-- 1. OPENING ENVELOPE -->
+<!-- 1. FULL-SCREEN ROYAL ENVELOPE -->
 <div id="intro">
-  <p class="kicker">YOU ARE CORDIALLY INVITED</p>
+  <div id="sparks" aria-hidden="true"></div>
+  <div class="in-top">
+    <p class="mono">M ❤️ D</p>
+    <p class="celebrate">A Celebration of Love</p>
+  </div>
+
   <button class="env" id="envelope" aria-label="Tap to open the invitation">
     <span class="back"></span>
-    <span class="letter"><span class="script">Mahima Weds Dheeraj</span></span>
+    <span class="letter"><span class="invited">You Are Cordially Invited</span><span class="star">✦</span></span>
     <span class="front"></span>
+    <svg class="orn" viewBox="0 0 300 240" aria-hidden="true">
+      <rect x="7" y="7" width="286" height="226" rx="4" fill="none" stroke="#e0b855" stroke-width="2"/>
+      <rect x="13" y="13" width="274" height="214" rx="2" fill="none" stroke="#e0b855" stroke-width=".8" stroke-dasharray="1 3"/>
+      <path d="M7 7 L150 134 L293 7" fill="none" stroke="#e0b855" stroke-width="2"/>
+      <use href="#fl" x="12" y="188" width="38" height="38" style="color:#fbe3e5"/>
+      <use href="#fl" x="250" y="188" width="38" height="38" style="color:#fbe3e5"/>
+      <path d="M62 205 H104 M196 205 H238" stroke="#e0b855" stroke-width="1.2"/>
+      <circle cx="58" cy="205" r="2.5" fill="#e0b855"/><circle cx="242" cy="205" r="2.5" fill="#e0b855"/>
+    </svg>
+    <span class="names">Mahima &amp; Dheeraj</span>
     <span class="flap"></span>
-    <span class="seal">M ❤️ D</span>
+    <span class="seal"><svg viewBox="-50 -50 100 100" style="color:#7a1f3a" aria-hidden="true"><use href="#fl"/></svg></span>
   </button>
-  <p class="kicker">A CELEBRATION OF LOVE</p>
-  <p class="tap">Tap to Open the Invitation</p>
+
+  <p class="tap">TAP TO OPEN THE INVITATION</p>
 </div>
 
 <main>
@@ -50,32 +65,106 @@
 
 <!-- 3. GANESH JI + MANTRAS -->
 <section class="frame ganesh">
-  <svg class="ganesha reveal" viewBox="0 0 200 235" role="img" aria-label="Lord Ganesha illustration">
+  <svg class="ganesha reveal" viewBox="0 0 320 420" role="img" aria-label="Lord Ganesha seated on a lotus inside a temple arch">
     <defs>
-      <radialGradient id="glow"><stop offset="0" stop-color="#fff3c4"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/></radialGradient>
-      <linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6e2a3"/><stop offset="1" stop-color="#b8923a"/></linearGradient>
+      <linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0b8"/><stop offset=".45" stop-color="#e0b855"/><stop offset="1" stop-color="#9c7424"/></linearGradient>
+      <radialGradient id="wn" cx=".5" cy=".38" r=".75"><stop offset="0" stop-color="#8a2442"/><stop offset="1" stop-color="#3d0f26"/></radialGradient>
+      <radialGradient id="gl"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".95"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/></radialGradient>
+      <linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4ad66"/><stop offset="1" stop-color="#d9793a"/></linearGradient>
+      <linearGradient id="pk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0f2"/><stop offset="1" stop-color="#e58aa0"/></linearGradient>
+      <g id="lot" fill="url(#pk)" stroke="#b8566e" stroke-width="1">
+        <use href="#lp" transform="rotate(-72) scale(.75)"/><use href="#lp" transform="rotate(72) scale(.75)"/>
+        <use href="#lp" transform="rotate(-38) scale(.9)"/><use href="#lp" transform="rotate(38) scale(.9)"/>
+        <path id="lp" d="M0 0 C-14 -10 -14 -30 0 -44 C14 -30 14 -10 0 0Z"/>
+      </g>
     </defs>
-    <circle cx="100" cy="105" r="100" fill="url(#glow)"/>
-    <circle cx="100" cy="105" r="82" fill="none" stroke="url(#gd)" stroke-width="2" stroke-dasharray="2 6"/>
-    <ellipse cx="52" cy="104" rx="27" ry="38" fill="#f0a98a" stroke="url(#gd)" stroke-width="2"/>
-    <ellipse cx="52" cy="104" rx="15" ry="26" fill="#f7c7b3"/>
-    <ellipse cx="148" cy="104" rx="27" ry="38" fill="#f0a98a" stroke="url(#gd)" stroke-width="2"/>
-    <ellipse cx="148" cy="104" rx="15" ry="26" fill="#f7c7b3"/>
-    <path d="M38 222 Q48 152 100 148 Q152 152 162 222 Z" fill="#e8a04a" stroke="url(#gd)" stroke-width="2"/>
-    <path d="M68 162 Q100 192 132 162" fill="none" stroke="url(#gd)" stroke-width="4" stroke-dasharray="1 5" stroke-linecap="round"/>
-    <ellipse cx="100" cy="98" rx="40" ry="44" fill="#f3b08c" stroke="url(#gd)" stroke-width="2"/>
-    <path d="M62 72 L70 38 L86 56 L100 26 L114 56 L130 38 L138 72 Q100 58 62 72Z" fill="url(#gd)" stroke="#8a6a24" stroke-width="1.2"/>
-    <circle cx="100" cy="46" r="4.5" fill="#d98b9b"/><circle cx="78" cy="58" r="3" fill="#d98b9b"/><circle cx="122" cy="58" r="3" fill="#d98b9b"/>
-    <path d="M93 78 Q100 73 107 78 M100 76 V86" stroke="#b5483f" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <path d="M79 94 q8 -7 15 0 M106 94 q8 -7 15 0" stroke="#4a2c1a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-    <path d="M100 100 C100 136 92 158 118 168" fill="none" stroke="url(#gd)" stroke-width="25" stroke-linecap="round"/>
-    <path d="M100 100 C100 136 92 158 118 168" fill="none" stroke="#f3b08c" stroke-width="21" stroke-linecap="round"/>
-    <path d="M100 108 C100 138 95 154 114 163" fill="none" stroke="#e79c78" stroke-width="2" stroke-linecap="round"/>
-    <path d="M82 118 Q72 140 84 150" fill="none" stroke="#fffaf0" stroke-width="6" stroke-linecap="round"/>
-    <g transform="translate(100 224)" fill="#f4c9cf" stroke="#d98b9b" stroke-width="1.2">
-      <ellipse cy="-12" rx="11" ry="19" transform="rotate(-64)"/><ellipse cy="-12" rx="11" ry="19" transform="rotate(64)"/>
-      <ellipse cy="-12" rx="11" ry="19" transform="rotate(-32)"/><ellipse cy="-12" rx="11" ry="19" transform="rotate(32)"/>
-      <ellipse cy="-14" rx="11" ry="20" fill="#fbe0e4"/>
+
+    <!-- temple arch -->
+    <path d="M16 410 V160 A144 144 0 0 1 304 160 V410 Z" fill="url(#wn)" stroke="url(#gd)" stroke-width="4"/>
+    <path d="M29 398 V162 A131 131 0 0 1 291 162 V398" fill="none" stroke="#e0b855" stroke-width="1.3" stroke-dasharray="1 5" stroke-linecap="round"/>
+    <g fill="#f0d58f"><circle cx="50" cy="90" r="1.6" class="tw"/><circle cx="270" cy="100" r="1.6" class="tw"/><circle cx="72" cy="150" r="1.3"/><circle cx="250" cy="160" r="1.3"/><circle cx="42" cy="220" r="1.5" class="tw"/><circle cx="278" cy="230" r="1.5" class="tw"/><circle cx="100" cy="60" r="1.2"/><circle cx="222" cy="58" r="1.2"/></g>
+
+    <!-- halo -->
+    <circle cx="160" cy="138" r="112" fill="url(#gl)"/>
+    <circle cx="160" cy="138" r="92" fill="none" stroke="#e0b855" stroke-width="1.5" stroke-dasharray="1 7" stroke-linecap="round" class="spin"/>
+    <circle cx="160" cy="138" r="84" fill="url(#gd)"/>
+    <circle cx="160" cy="138" r="76" fill="none" stroke="#7a1f3a" stroke-width="1.4" stroke-dasharray="2 4" opacity=".7"/>
+
+    <!-- lotus seat (behind body) -->
+    <use href="#lot" transform="translate(160 400) scale(2.1)"/>
+    <use href="#lot" transform="translate(88 398) rotate(-18) scale(1.5)"/>
+    <use href="#lot" transform="translate(232 398) rotate(18) scale(1.5)"/>
+    <path d="M16 398 H304 V410 H16Z" fill="#3d0f26" stroke="url(#gd)" stroke-width="2"/>
+
+    <!-- ears -->
+    <ellipse cx="106" cy="140" rx="28" ry="39" transform="rotate(12 106 140)" fill="url(#sk)" stroke="url(#gd)" stroke-width="2"/>
+    <ellipse cx="104" cy="143" rx="15" ry="27" transform="rotate(12 104 143)" fill="#f3b4a4"/>
+    <ellipse cx="214" cy="140" rx="28" ry="39" transform="rotate(-12 214 140)" fill="url(#sk)" stroke="url(#gd)" stroke-width="2"/>
+    <ellipse cx="216" cy="143" rx="15" ry="27" transform="rotate(-12 216 143)" fill="#f3b4a4"/>
+
+    <!-- body -->
+    <ellipse cx="160" cy="205" rx="62" ry="38" fill="url(#sk)" stroke="url(#gd)" stroke-width="2"/>
+    <ellipse cx="160" cy="268" rx="74" ry="70" fill="url(#sk)" stroke="url(#gd)" stroke-width="2"/>
+    <ellipse cx="112" cy="352" rx="38" ry="15" fill="url(#sk)" stroke="url(#gd)" stroke-width="2"/>
+    <ellipse cx="208" cy="352" rx="38" ry="15" fill="url(#sk)" stroke="url(#gd)" stroke-width="2"/>
+    <path d="M92 292 Q160 322 228 292 L248 352 Q160 378 72 352 Z" fill="#8c2543" stroke="url(#gd)" stroke-width="2"/>
+    <path d="M100 318 Q160 342 220 318 M92 336 Q160 360 228 336" fill="none" stroke="#e0b855" stroke-width="1.2" stroke-dasharray="3 4"/>
+    <path d="M90 291 Q160 319 230 291" fill="none" stroke="url(#gd)" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- arms: left holds bowl of modaks, right blesses -->
+    <path d="M106 214 C70 222 62 262 80 292" fill="none" stroke="url(#gd)" stroke-width="24" stroke-linecap="round"/>
+    <path d="M106 214 C70 222 62 262 80 292" fill="none" stroke="url(#sk)" stroke-width="20" stroke-linecap="round"/>
+    <path d="M214 214 C250 214 262 190 258 168" fill="none" stroke="url(#gd)" stroke-width="24" stroke-linecap="round"/>
+    <path d="M214 214 C250 214 262 190 258 168" fill="none" stroke="url(#sk)" stroke-width="20" stroke-linecap="round"/>
+    <ellipse cx="68" cy="262" rx="12" ry="4" transform="rotate(-70 68 262)" fill="url(#gd)"/>
+    <ellipse cx="254" cy="194" rx="12" ry="4" transform="rotate(-60 254 194)" fill="url(#gd)"/>
+    <circle cx="258" cy="158" r="14" fill="url(#sk)" stroke="url(#gd)" stroke-width="2"/>
+    <circle cx="258" cy="158" r="5" fill="#c92f4f"/>
+    <path d="M84 300 Q110 334 136 300 Z" fill="url(#gd)" stroke="#8a6418"/>
+    <g fill="#f4b45e" stroke="#b8812a"><circle cx="97" cy="295" r="7"/><circle cx="110" cy="291" r="7.5"/><circle cx="123" cy="295" r="7"/></g>
+    <circle cx="82" cy="298" r="12" fill="url(#sk)" stroke="url(#gd)" stroke-width="2"/>
+
+    <!-- jewellery -->
+    <path d="M120 196 Q160 238 200 196" fill="none" stroke="url(#gd)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M124 202 Q160 242 196 202" fill="none" stroke="#fff6e4" stroke-width="3" stroke-dasharray=".1 6.5" stroke-linecap="round"/>
+    <circle cx="160" cy="232" r="6.5" fill="#a8213f" stroke="url(#gd)" stroke-width="2"/>
+
+    <!-- head -->
+    <ellipse cx="160" cy="134" rx="40" ry="42" fill="url(#sk)" stroke="url(#gd)" stroke-width="2"/>
+    <path d="M134 124 Q145 118 155 123 M165 123 Q175 118 186 124" fill="none" stroke="#8a4a22" stroke-width="2" stroke-linecap="round"/>
+    <path d="M136 133 Q145 141 154 133 M166 133 Q175 141 184 133" fill="none" stroke="#3b1c10" stroke-width="2.8" stroke-linecap="round"/>
+    <path d="M150 111 Q160 122 170 111 M160 106 V119" fill="none" stroke="#c92f4f" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="160" cy="114" r="2.2" fill="#ffe9a8"/>
+
+    <!-- tusks and trunk -->
+    <path d="M178 170 Q198 180 195 206" fill="none" stroke="#c9b27a" stroke-width="9" stroke-linecap="round"/>
+    <path d="M178 170 Q198 180 195 206" fill="none" stroke="#fff6e4" stroke-width="6" stroke-linecap="round"/>
+    <path d="M143 170 Q134 178 135 188" fill="none" stroke="#c9b27a" stroke-width="8" stroke-linecap="round"/>
+    <path d="M143 170 Q134 178 135 188" fill="none" stroke="#fff6e4" stroke-width="5" stroke-linecap="round"/>
+    <path d="M160 140 C168 170 170 196 156 214 C148 224 134 220 136 208" fill="none" stroke="url(#gd)" stroke-width="30" stroke-linecap="round"/>
+    <path d="M160 140 C168 170 170 196 156 214 C148 224 134 220 136 208" fill="none" stroke="url(#sk)" stroke-width="26" stroke-linecap="round"/>
+    <path d="M162 150 C169 176 169 196 156 211" fill="none" stroke="#f9c996" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+
+    <!-- crown -->
+    <path d="M120 104 L126 70 L142 84 L160 40 L178 84 L194 70 L200 104 Q160 92 120 104Z" fill="url(#gd)" stroke="#8a6418" stroke-width="1.3"/>
+    <circle cx="160" cy="34" r="6" fill="url(#gd)" stroke="#8a6418"/>
+    <circle cx="160" cy="68" r="5" fill="#a8213f"/><circle cx="139" cy="90" r="3.5" fill="#a8213f"/><circle cx="181" cy="90" r="3.5" fill="#a8213f"/>
+    <path d="M124 102 Q160 90 196 102" fill="none" stroke="#fff0b8" stroke-width="1.2" stroke-dasharray="1 4"/>
+
+    <!-- lotus flowers and diyas -->
+    <use href="#lot" transform="translate(48 352) scale(.85)"/>
+    <use href="#lot" transform="translate(272 352) scale(.85)"/>
+    <g transform="translate(50 388)">
+      <circle cy="-14" r="28" fill="url(#gl)" class="glow"/>
+      <path d="M-16 0 Q0 16 16 0 Z" fill="url(#gd)"/><ellipse rx="16" ry="3.5" fill="#7a1f3a"/>
+      <path class="flame" d="M0 -3 C-7 -12 -2 -20 0 -28 C2 -20 7 -12 0 -3Z" fill="#ffb33a"/>
+      <path d="M0 -4 C-3 -9 -1 -13 0 -17 C1 -13 3 -9 0 -4Z" fill="#fff3c4"/>
+    </g>
+    <g transform="translate(270 388)">
+      <circle cy="-14" r="28" fill="url(#gl)" class="glow"/>
+      <path d="M-16 0 Q0 16 16 0 Z" fill="url(#gd)"/><ellipse rx="16" ry="3.5" fill="#7a1f3a"/>
+      <path class="flame" d="M0 -3 C-7 -12 -2 -20 0 -28 C2 -20 7 -12 0 -3Z" fill="#ffb33a"/>
+      <path d="M0 -4 C-3 -9 -1 -13 0 -17 C1 -13 3 -9 0 -4Z" fill="#fff3c4"/>
     </g>
   </svg>
 
@@ -111,4 +200,4 @@
 
 <script src="script.js"></script>
 </body>
-</html>
+  </html>

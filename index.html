@@ -9,6 +9,29 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Kalam:wght@700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+/* Ganesha picture: gold arch frame, golden glow, pink lotus decorations.
+   Shows only when ganesha.jpg exists next to index.html; otherwise the drawn Ganesha stays. */
+.ganesha-photo{--w:min(86vw,380px);display:none;position:relative;width:var(--w);margin-bottom:.8rem}
+.ganesha-photo.has-img{display:block}
+.ganesha-photo.has-img + .ganesha{display:none}
+.ganesha-photo::before{content:"";position:absolute;inset:-12% -14%;pointer-events:none;
+  background:radial-gradient(circle at 50% 45%,rgba(255,214,140,.55),transparent 65%)}
+.gp-arch{position:relative;z-index:1;padding:5px;
+  background:linear-gradient(135deg,#fff0b8,#c99a3c 40%,#8a6418 70%,#e0b855);
+  border-radius:calc(var(--w)/2) calc(var(--w)/2) 14px 14px;
+  box-shadow:0 0 0 5px #fff8ee,0 0 0 7px rgba(184,146,58,.75),0 16px 32px rgba(92,20,38,.35)}
+.gp-in{position:relative;aspect-ratio:499/478;overflow:hidden;background:#fdf5ea;
+  border-radius:calc(var(--w)/2 - 5px) calc(var(--w)/2 - 5px) 9px 9px}
+.gp-in img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.gp-in::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 38%,rgba(255,214,140,.14),transparent 60%)}
+.gp-lotus{position:absolute;z-index:2;height:auto;pointer-events:none;filter:drop-shadow(0 3px 4px rgba(92,20,38,.35))}
+.gp-1{width:27%;left:-8%;bottom:-5%;transform:rotate(-14deg)}
+.gp-2{width:27%;right:-8%;bottom:-5%;transform:rotate(14deg)}
+.gp-3{width:18%;left:12%;bottom:-8%;transform:rotate(-34deg)}
+.gp-4{width:18%;right:12%;bottom:-8%;transform:rotate(34deg)}
+</style>
 </head>
 <body class="locked">
 
@@ -65,6 +88,25 @@
 
 <!-- 3. GANESH JI + MANTRAS -->
 <section class="frame ganesh">
+  <figure class="ganesha-photo reveal">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="gplot" viewBox="-40 -60 80 62">
+        <g stroke="#c9677f" stroke-width=".9" stroke-linejoin="round">
+          <path fill="#f4b6c4" d="M0 0C-22-4-34-22-26-40C-14-34-4-18 0 0ZM0 0C22-4 34-22 26-40C14-34 4-18 0 0Z"/>
+          <path fill="#f7c9d4" d="M0 0C-16-8-20-30-8-50C0-34 2-16 0 0ZM0 0C16-8 20-30 8-50C0-34-2-16 0 0Z"/>
+          <path fill="#fde4ea" d="M0 0C-10-12-10-36 0-56C10-36 10-12 0 0Z"/>
+        </g>
+      </symbol>
+    </svg>
+    <div class="gp-arch"><div class="gp-in">
+      <img src="ganesha.jpg" alt="Lord Ganesha seated on a pink lotus" decoding="async"
+           onload="this.closest('.ganesha-photo').classList.add('has-img')">
+    </div></div>
+    <svg class="gp-lotus gp-1" viewBox="-40 -60 80 62" aria-hidden="true"><use href="#gplot"/></svg>
+    <svg class="gp-lotus gp-2" viewBox="-40 -60 80 62" aria-hidden="true"><use href="#gplot"/></svg>
+    <svg class="gp-lotus gp-3" viewBox="-40 -60 80 62" aria-hidden="true"><use href="#gplot"/></svg>
+    <svg class="gp-lotus gp-4" viewBox="-40 -60 80 62" aria-hidden="true"><use href="#gplot"/></svg>
+  </figure>
   <svg class="ganesha reveal" viewBox="0 0 320 420" role="img" aria-label="Lord Ganesha seated on a lotus inside a temple arch">
     <defs>
       <linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0b8"/><stop offset=".45" stop-color="#e0b855"/><stop offset="1" stop-color="#9c7424"/></linearGradient>
@@ -185,13 +227,13 @@
     <article class="person reveal" style="--d:.3s">
       <p class="role">BRIDE</p>
       <h3 class="name gold">ENG. MAHIMA</h3>
-      <p class="parents">Beloved daughter of<br><strong>Late Mr. Narendra Kumar (LIC)</strong><br>&amp; <strong>Mrs. Gauri Varshney (LIC)</strong></p>
+      <p class="parents">Beloved daughter of<br><strong>Mrs. Gauri Varshney (LIC)</strong><br>&amp; <strong>Late Mr. Narendra Kumar (LIC)</strong></p>
     </article>
     <div class="divider reveal" style="--d:.45s" aria-hidden="true"><i></i><b>✦</b><i></i></div>
     <article class="person reveal" style="--d:.6s">
       <p class="role">GROOM</p>
       <h3 class="name gold">ENG. DHEERAJ</h3>
-      <p class="parents">Beloved son of<br><strong>Mr. Ramnarayan ji</strong><br>&amp; <strong>Late Mrs. Meena Devi</strong></p>
+      <p class="parents">Beloved son of<br><strong>Late Mrs. Meena Devi</strong><br>&amp; <strong>Mr. Ramnarayan ji</strong></p>
     </article>
   </div>
 </section>
@@ -200,4 +242,4 @@
 
 <script src="script.js"></script>
 </body>
-  </html>
+</html>

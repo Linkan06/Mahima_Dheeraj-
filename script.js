@@ -76,4 +76,115 @@ function revealVisible() {
     const r = el.getBoundingClientRect();
     if (r.top < innerHeight && r.bottom > 0) el.classList.add('in');
   });
+}
+
+
+/* ================= PHASE 2 ================= */
+
+/* ----- 5. Scratch-to-reveal date (real canvas, touch + mouse) ----- */
+(function () {
+  const card = document.getElementById('scratchCard');
+  const cv = document.getElementById('scratchCanvas');
+  const tapBtn = document.getElementById('tapReveal');
+  if (!card || !cv || !cv.getContext) return;
+  const ctx = cv.getContext('2d', { willReadFrequently: true });
+  let w = 0, h = 0, drawing = false, done = false, started = false, last = null, timer = null;
+
+  function paintFoil() {                       // gold foil surface
+    ctx.globalCompositeOperation = 'source-over';
+    const g = ctx.createLinearGradient(0, 0, w, h);
+    ['#a8801f', '#f3dc9b', '#c99a3c', '#f8e8b0', '#b8923a'].forEach((c, i) => g.addColorStop(i / 4, c));
+    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    const sh = ctx.createRadialGradient(w * .3, h * .25, 0, w * .3, h * .25, w * .7);
+    sh.addColorStop(0, 'rgba(255,255,255,.38)'); sh.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = sh; ctx.fillRect(0, 0, w, h);
+    for (let i = 0; i < 160; i++) {
+      ctx.fillStyle = Math.random() < .5 ? 'rgba(255,255,255,.22)' : 'rgba(110,70,5,.14)';
+      ctx.beginPath(); ctx.arc(Math.random() * w, Math.random() * h, Math.random() * 1.8 + .4, 0, 6.283); ctx.fill();
     }
+    ctx.strokeStyle = 'rgba(110,70,5,.55)'; ctx.lineWidth = 1.5;
+    ctx.strokeRect(10, 10, w - 20, h - 20);
+    ctx.setLineDash([2, 5]); ctx.strokeRect(16, 16, w - 32, h - 32); ctx.setLineDash([]);
+  }
+
+  function resize() {                          // runs on load and when the card size changes (e.g. rotation)
+    if (done) return;
+    const r = cv.getBoundingClientRect();
+    const nw = Math.round(r.width), nh = Math.round(r.height);
+    if (!nw || !nh || (nw === w && nh === h)) return;
+    w = nw; h = nh;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = w * dpr; cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    paintFoil();
+  }
+
+  function pt(e) {
+    const r = cv.getBoundingClientRect();
+    return { x: (e.clientX - r.left) * (w / r.width), y: (e.clientY - r.top) * (h / r.height) };
+  }
+  function scratch(p) {
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.lineWidth = Math.max(36, w * .1); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(last ? last.x : p.x, last ? last.y : p.y); ctx.lineTo(p.x + .01, p.y); ctx.stroke();
+    last = p;
+  }
+  function begin() { if (!started) { started = true; card.classList.add('scratching'); } }
+  function clearedShare() {
+    const d = ctx.getImageData(0, 0, cv.width, cv.height).data;
+    let n = 0, t = 0;
+    for (let i = 3; i < d.length; i += 64) { t++; if (d[i] < 128) n++; }   // sample every 16th pixel
+    return n / t;
+  }
+  function check() { timer = null; if (!done && clearedShare() > .5) finish(); }
+  function finish() {                          // reveal the whole date
+    if (done) return;
+    begin(); done = true; drawing = false;
+    card.classList.add('revealed');
+    if (tapBtn) tapBtn.hidden = true;
+    document.dispatchEvent(new CustomEvent('date:revealed'));
+  }
+
+  cv.addEventListener('pointerdown', e => {
+    if (done) return;
+    drawing = true; last = null;
+    try { cv.setPointerCapture(e.pointerId); } catch (_) {}
+    begin(); scratch(pt(e)); e.preventDefault();
+  });
+  cv.addEventListener('pointermove', e => {
+    if (!drawing || done) return;
+    scratch(pt(e));
+    if (!timer) timer = setTimeout(check, 250);
+    e.preventDefault();
+  });
+  ['pointerup', 'pointercancel'].forEach(t => cv.addEventListener(t, () => {
+    drawing = false; last = null;
+    if (!done) { clearTimeout(timer); check(); }
+  }));
+  cv.addEventListener('contextmenu', e => e.preventDefault());
+  if (tapBtn) tapBtn.addEventListener('click', finish);
+
+  if ('ResizeObserver' in window) new ResizeObserver(resize).observe(card);
+  else addEventListener('resize', resize);
+  resize();
+})();
+
+/* ----- 6. Live countdown to 20 Nov 2026, 7:00 PM IST ----- */
+(function () {
+  // "+05:30" pins the moment to Indian Standard Time, whatever timezone the visitor is in.
+  const TARGET = Date.parse('2026-11-20T19:00:00+05:30');
+  const el = { d: document.getElementById('cd-d'), h: document.getElementById('cd-h'),
+               m: document.getElementById('cd-m'), s: document.getElementById('cd-s') };
+  if (!el.d || !el.h || !el.m || !el.s) return;
+  const two = n => String(n).padStart(2, '0');
+
+  function tick() {
+    const diff = Math.max(0, TARGET - Date.now());            // never goes negative
+    el.d.textContent = two(Math.floor(diff / 864e5));
+    el.h.textContent = two(Math.floor(diff % 864e5 / 36e5));
+    el.m.textContent = two(Math.floor(diff % 36e5 / 6e4));
+    el.s.textContent = two(Math.floor(diff % 6e4 / 1e3));
+    if (diff > 0) setTimeout(tick, 1000 - (Date.now() % 1000)); // stay in step with the clock
+  }
+  tick();
+})();

@@ -237,9 +237,36 @@
     </article>
   </div>
 </section>
-<!-- PHASE 2 (scratch card + countdown) will be added here -->
+<!-- 5. SCRATCH-TO-REVEAL DATE -->
+<section class="frame scratch" id="date">
+  <div class="scratch-card reveal" id="scratchCard">
+    <div class="date-under">
+      <span class="d-num">20</span>
+      <span class="d-orn" aria-hidden="true">✦</span>
+      <span class="d-mon">NOVEMBER 2026</span>
+    </div>
+    <canvas id="scratchCanvas" aria-label="Scratch surface"></canvas>
+    <div class="foil-text">
+      <p class="f-top">A SPECIAL DATE AWAITS...</p>
+      <p class="f-sub">Scratch to Reveal Our Big Day</p>
+    </div>
+  </div>
+  <button type="button" class="tap-reveal reveal" id="tapReveal" style="--d:.3s">Tap to reveal</button>
+</section>
+
+<!-- 6. LIVE COUNTDOWN (target: 20 Nov 2026, 7:00 PM IST) -->
+<section class="frame countdown" id="countdown">
+  <h2 class="eyebrow reveal">THE COUNTDOWN TO FOREVER BEGINS</h2>
+  <div class="cd reveal" id="cd" style="--d:.2s" role="timer" aria-label="Countdown to 20 November 2026, 7:00 PM IST">
+    <div class="cd-box"><span class="n" id="cd-d">00</span><span class="u">Days</span></div>
+    <div class="cd-box"><span class="n" id="cd-h">00</span><span class="u">Hours</span></div>
+    <div class="cd-box"><span class="n" id="cd-m">00</span><span class="u">Minutes</span></div>
+    <div class="cd-box"><span class="n" id="cd-s">00</span><span class="u">Seconds</span></div>
+  </div>
+</section>
+<!-- PHASE 3 (the eight events) will be added here -->
 </main>
 
 <script src="script.js"></script>
 </body>
-</html>
+   </html>

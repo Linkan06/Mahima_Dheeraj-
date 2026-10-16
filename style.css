@@ -140,3 +140,48 @@ section{position:relative;z-index:1;min-height:100svh;display:flex;flex-directio
   *,*::before,*::after{animation:none!important;transition-duration:.01s!important}
   html{scroll-behavior:auto}
 }
+
+
+/* ================= PHASE 2 ================= */
+
+/* ===== 5. Scratch card (light ivory and blush) ===== */
+.scratch{gap:1.4rem;--paper:#fff8ee;color:var(--ink);background:linear-gradient(180deg,#fff1e6,#f9e0e4 55%,#fff8ee)}
+.scratch-card{position:relative;width:min(88vw,420px);aspect-ratio:8/5;border-radius:14px;overflow:hidden;
+  border:3px solid #c99a3c;background:#fff8ee;
+  box-shadow:0 0 0 5px #fff8ee,0 0 0 7px rgba(184,146,58,.7),0 18px 34px rgba(92,20,38,.35)}
+.date-under{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 40%,#fffdf6,#f9e0e4)}
+.date-under::before{content:"";position:absolute;inset:8px;border:1px solid #c99a3c;border-radius:8px}
+.d-num{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(3.6rem,18vw,5.6rem);line-height:1;color:var(--wine)}
+.d-orn{color:var(--gold);font-size:1rem;margin:.1rem 0}
+.d-mon{font-family:'Cinzel',serif;letter-spacing:.3em;margin-left:.3em;font-size:clamp(.85rem,4.2vw,1.3rem);color:var(--burg)}
+.scratch-card canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;
+  touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;transition:opacity 1.2s}
+.foil-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.6rem;padding:1rem;text-align:center;pointer-events:none;transition:opacity .5s}
+.f-top{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.14em;font-size:clamp(.9rem,4.4vw,1.3rem);color:var(--wine)}
+.f-sub{font-style:italic;font-weight:600;font-size:clamp(1.05rem,4.6vw,1.3rem);color:#4a1b26}
+.scratch-card::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);
+  background-size:250% 100%;animation:sweep 3.2s ease-in-out infinite}
+@keyframes sweep{from{background-position:150% 0}to{background-position:-50% 0}}
+.scratching .foil-text,.revealed .foil-text{opacity:0}
+.scratching::after,.revealed::after{display:none}
+.revealed canvas{opacity:0;pointer-events:none;touch-action:auto}
+.revealed .date-under{animation:glowIn 2.2s ease-out}
+@keyframes glowIn{from{box-shadow:inset 0 0 70px rgba(255,214,140,.95)}to{box-shadow:inset 0 0 0 rgba(255,214,140,0)}}
+.tap-reveal{background:none;border:0;cursor:pointer;min-height:44px;padding:.8rem 1.2rem;
+  font-family:'Cinzel',serif;letter-spacing:.2em;font-size:.72rem;text-transform:uppercase;
+  color:var(--burg);text-decoration:underline;text-underline-offset:4px;-webkit-tap-highlight-color:transparent}
+.tap-reveal[hidden]{display:none}
+
+/* ===== 6. Countdown (deep wine and gold) ===== */
+.countdown{gap:2.2rem;--paper:#2e1030;color:#f6e9dc;
+  background:radial-gradient(circle at 50% 40%,#7a1f3a 0,#5c1426 55%,#2e1030 100%)}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.4rem,2.5vw,1rem);width:min(92vw,560px)}
+.cd-box{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:clamp(.8rem,4vw,1.4rem) .2rem;
+  border:1px solid var(--gold);border-radius:10px;background:rgba(255,255,255,.05);
+  box-shadow:inset 0 0 0 3px rgba(46,16,48,.6),inset 0 0 0 4px rgba(224,184,85,.35)}
+.cd .n{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(1.7rem,9vw,3.2rem);line-height:1;color:#f3dc9b;
+  font-variant-numeric:tabular-nums;text-shadow:0 0 16px rgba(255,214,140,.45)}
+.cd .u{font-family:'Cinzel',serif;letter-spacing:.16em;text-transform:uppercase;font-size:clamp(.52rem,2.4vw,.8rem);color:#f2b8c4}

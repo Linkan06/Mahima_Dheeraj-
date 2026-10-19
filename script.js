@@ -23,19 +23,21 @@ intro.addEventListener('click', openInvitation);
 
 /* ----- Floral corners on the envelope screen and every framed section ----- */
 const colours = ['#f4c9cf', '#e8a7b3', '#fbe3e5', '#f0d28a'];
-function addCorners(box, offset) {
+function addCorners(box, offset, list) {
+  const cols = list || colours;
   ['tl', 'tr', 'bl', 'br'].forEach((pos, k) => {
     const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     s.setAttribute('class', 'fl ' + pos);
     s.setAttribute('aria-hidden', 'true');
-    s.style.color = colours[(offset + k) % colours.length];
+    s.style.color = cols[(offset + k) % cols.length];
     s.style.animationDelay = (k * -2.2) + 's';
     s.innerHTML = '<use href="#fl"/>';
     box.appendChild(s);
   });
 }
 addCorners(intro, 0);
-document.querySelectorAll('.frame').forEach((sec, i) => addCorners(sec, i));
+document.querySelectorAll('.frame').forEach((sec, i) =>
+  addCorners(sec, i, sec.dataset.flowers ? sec.dataset.flowers.split(',') : null));
 
 /* ----- Golden sparkles on the envelope screen ----- */
 const sparkBox = document.getElementById('sparks');
@@ -187,4 +189,16 @@ function revealVisible() {
     if (diff > 0) setTimeout(tick, 1000 - (Date.now() % 1000)); // stay in step with the clock
   }
   tick();
+})();
+
+
+/* ================= PHASE 3 ================= */
+/* Event decorations only animate while their section is on screen (keeps the page smooth on phones). */
+(function () {
+  const events = document.querySelectorAll('.event');
+  if (!events.length || !('IntersectionObserver' in window)) return;
+  const io2 = new IntersectionObserver(list => {
+    list.forEach(e => e.target.classList.toggle('live', e.isIntersecting));
+  }, { rootMargin: '120px 0px' });
+  events.forEach(el => io2.observe(el));
 })();

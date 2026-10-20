@@ -209,11 +209,6 @@ section{position:relative;z-index:1;min-height:100svh;display:flex;flex-directio
 .ev-orn{display:flex;align-items:center;justify-content:center;gap:.7rem;color:var(--line);margin:1rem 0 .6rem;width:100%}
 .ev-orn i{display:block;height:1px;width:70px;background:linear-gradient(90deg,transparent,currentColor,transparent)}
 
-.ev-art{width:100%;max-width:460px;margin:1rem auto 1.3rem;padding:7px;border-radius:18px;
-  background:linear-gradient(135deg,#fff0b8,#c99a3c 40%,#8a6418 70%,#e0b855);
-  box-shadow:0 0 0 4px var(--ringc,#fff8ee),0 0 0 6px rgba(184,146,58,.7),0 16px 30px rgba(0,0,0,.28),0 0 36px var(--glow,rgba(255,214,140,.5))}
-.ev-art img{display:block;width:100%;height:auto;min-height:200px;max-height:78svh;object-fit:contain;border-radius:11px;background:var(--artbg,#fff8ee)}
-
 .ev-details{position:relative;width:100%;max-width:460px;margin-top:.6rem;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;
   border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:0 8px 22px rgba(0,0,0,.12)}
 .ev-details>div{grid-column:1/-1;padding:.9rem .8rem;border-top:1px solid var(--line)}
@@ -288,19 +283,45 @@ section{position:relative;z-index:1;min-height:100svh;display:flex;flex-directio
 .ev8{--bg:radial-gradient(circle at 50% 15%,#fffaf0 0,#f9e0e4 55%,#ecd9a8 130%);--paper:#fff4e8;--ink:#4a1b26;--title:#5c1426;--accent:#7a1f3a;--line:#b8923a;
   --card:rgba(255,255,255,.66);--btn:linear-gradient(135deg,#4a0f20,#7a1f3a);--glow:rgba(255,214,140,.6);--artbg:#fff8ee;
   --c1:#e58aa0;--c2:#f6d3d8;--c3:#e0b855;padding-bottom:5.4rem}
-.mandap{position:relative;width:min(100%,520px);margin:1.2rem auto 1.4rem;padding:56px 26px 0}
-.mandap .ev-art{margin:0;max-width:none}
-.canopy{position:absolute;top:0;left:0;right:0;height:52px;z-index:2;border-radius:10px 10px 0 0;filter:drop-shadow(0 4px 6px rgba(92,20,38,.3));
-  background:radial-gradient(circle at 50% 0,#f6d3d8 0 12px,#c99a3c 12px 14px,transparent 15px) 0 26px/30px 24px repeat-x,
-    linear-gradient(180deg,#e9cf8a,#b8923a 70%,#8a6418) 0 0/100% 28px no-repeat}
-.pillar{position:absolute;top:26px;bottom:0;width:20px;z-index:2;border-radius:4px 4px 0 0;box-shadow:0 0 0 1px rgba(92,20,38,.25);
-  background:linear-gradient(90deg,#8a6418,#f3dc9b 40%,#c99a3c 60%,#8a6418)}
-.pillar.l{left:0}.pillar.r{right:0}
-.pillar::before{content:"";position:absolute;top:-5px;left:-4px;right:-4px;height:10px;border-radius:3px;background:linear-gradient(#f3dc9b,#b8923a)}
-.mandap::after{content:"";position:absolute;left:0;right:0;top:48px;height:10px;z-index:3;pointer-events:none;
-  background:radial-gradient(circle,#fff3c4 0 2.5px,transparent 3.5px) 0 50%/22px 10px repeat-x;animation:twinkle 2.4s ease-in-out infinite alternate}
-.garland{display:block;height:20px;margin:-6px -8px 0;position:relative;z-index:3;
-  background:radial-gradient(circle,#e58aa0 0 6px,#c9677f 6px 7px,transparent 8px) 0 50%/20px 20px repeat-x}
 .vows-names{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.12em;line-height:1.7;margin-top:.6rem;
   font-size:clamp(1.2rem,5.8vw,1.8rem);color:var(--title)}
 .vows-line{font-style:italic;font-weight:600;font-size:clamp(1.15rem,5vw,1.4rem);color:#7a5510;margin:.3rem 0 1.2rem}
+
+/* ================= PHASE 3.1: CARICATURES AS FULL-BLEED BACKGROUNDS (Events 1, 2, 6, 8) ================= */
+.ev-head,.ev-foot{display:flex;flex-direction:column;align-items:center;width:100%}
+.has-bg{min-height:max(130svh,860px);justify-content:stretch;padding-top:5.2rem;padding-bottom:3.6rem}
+.has-bg .ev-inner{flex:1;justify-content:space-between}
+.has-bg.ev1{padding-top:6rem}
+
+/* the picture itself: edge to edge, behind all text, nothing around it */
+.ev-bg{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;z-index:0;
+  object-position:var(--pos,50% 40%);transform-origin:var(--pos,50% 40%);animation:bgdrift 26s ease-in-out infinite alternate}
+@keyframes bgdrift{to{transform:scale(1.05)}}
+.js .event:not(.live) .ev-bg{animation-play-state:paused}
+
+/* very light theme tint + soft golden light; darkening only at the top and bottom where the text sits */
+.has-bg::before{content:"";position:absolute;inset:0;z-index:1;border:0;border-radius:0;box-shadow:none;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(var(--dk),.5) 0,rgba(var(--dk),.22) 14%,rgba(var(--dk),0) 32%,rgba(var(--dk),0) 52%,rgba(var(--dk),.3) 70%,rgba(var(--dk),.68) 100%),
+    radial-gradient(circle at 50% 38%,rgba(255,214,140,.16),transparent 58%),
+    var(--tint)}
+.has-bg .fx,.has-bg .beam{z-index:1}
+.has-bg .fl{display:none}
+.has-bg .vine{opacity:.75}
+.has-bg.ev1{--dk:58,20,6;--tint:rgba(244,162,58,.10);--pos:50% 45%}
+.has-bg.ev2{--dk:2,18,12;--tint:rgba(8,70,50,.14);--pos:50% 45%}
+.has-bg.ev6{--dk:30,38,10;--tint:rgba(98,118,50,.12);--pos:50% 45%}
+.has-bg.ev8{--dk:58,12,28;--tint:rgba(122,31,58,.08);--pos:50% 45%}
+
+/* text sits directly on the picture: light colours + soft shadows, no boxes */
+.has-bg{--line:rgba(246,226,166,.6)}
+.has-bg .ev-title{color:#fff6dc;text-shadow:0 2px 8px rgba(0,0,0,.7),0 0 22px rgba(0,0,0,.4)}
+.has-bg .ev-title.gold{color:transparent;text-shadow:none;filter:drop-shadow(0 2px 5px rgba(0,0,0,.75))}
+.has-bg .ev-sub{color:#f6e2a6;text-shadow:0 2px 6px rgba(0,0,0,.75)}
+.has-bg .ev-orn{color:#f6e2a6;filter:drop-shadow(0 1px 3px rgba(0,0,0,.6))}
+.has-bg .ev-details{background:none;border:0;border-radius:0;box-shadow:none;overflow:visible}
+.has-bg .ev-details>.half{border-top:1px solid var(--line)}
+.has-bg .ev-details dt{color:#f6e2a6;text-shadow:0 1px 4px rgba(0,0,0,.85)}
+.has-bg .ev-details dd{color:#fff8ee;text-shadow:0 2px 6px rgba(0,0,0,.85),0 0 14px rgba(0,0,0,.45)}
+.has-bg .vows-names{color:#fff6dc;text-shadow:0 2px 8px rgba(0,0,0,.75)}
+.has-bg .vows-line{color:#f6e2a6;text-shadow:0 2px 6px rgba(0,0,0,.8)}

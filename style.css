@@ -229,7 +229,6 @@ section{position:relative;z-index:1;min-height:100svh;display:flex;flex-directio
 .ev1{--bg:linear-gradient(180deg,#ffe9a0 0,#ffcf5c 50%,#f7a540 100%);--paper:#ffe9a0;--ink:#3f1806;--title:#6f2208;--accent:#7c2a0a;--line:#c2670d;
   --card:rgba(255,248,225,.86);--btn:linear-gradient(135deg,#7c2a0a,#c2410c);--glow:rgba(246,184,0,.6);--artbg:#fff3c4;
   --c1:#f6b800;--c2:#e8720c;--c3:#4f8a3a;padding-top:6rem}
-.bunting{position:absolute;top:0;left:0;right:0;height:36px;z-index:1;background:repeat-x url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='114' height='36'%3E%3Cpath d='M0 0h38L19 34z' fill='%23e8720c'/%3E%3Cpath d='M38 0h38L57 34z' fill='%23f6b800'/%3E%3Cpath d='M76 0h38L95 34z' fill='%234f8a3a'/%3E%3Cpath d='M0 1h114' stroke='%238a4b12' stroke-width='2'/%3E%3C/svg%3E")}
 
 /* --- Event 2: Bollywood beats (emerald, black, gold) --- */
 .ev2{--bg:radial-gradient(circle at 50% 0,#14795a 0,#0b3d2e 38%,#050d0a 100%);--paper:#07241b;--ink:#f6e9c8;--title:#f3dc9b;--accent:#e9cf8a;--line:#c99a3c;
@@ -258,11 +257,6 @@ section{position:relative;z-index:1;min-height:100svh;display:flex;flex-directio
 .ev4{--bg:linear-gradient(180deg,#fde4e8,#ffd8c2 55%,#ffe08a);--paper:#fde4e8;--ink:#4a1626;--title:#8a1f46;--accent:#8a1f46;--line:#d98b9b;
   --card:rgba(255,255,255,.62);--c1:#f4a6b8;--c2:#ffcf4d;--c3:#fff0f2}
 
-/* --- Event 5: Lunch (warm cream, peach) --- */
-.ev5{--bg:linear-gradient(180deg,#fff6ea,#ffe6d4);--paper:#fff6ea;--ink:#4a2e20;--title:#8a3f1d;--accent:#8a3f1d;--line:#e0a98a;
-  --card:rgba(255,255,255,.65);--c1:#ffcfb0;--c2:#f6c9b5;--c3:#fbe3e5}
-.ev5 .fx::before{animation-duration:26s;opacity:.6}
-
 /* --- Event 6: Hina hues (mehendi green, sage, olive, muted gold) --- */
 .ev6{--bg:linear-gradient(180deg,#e9eed6,#cdd8a8 55%,#b3c08c);--paper:#e0e7c6;--ink:#27300f;--title:#3f4d14;--accent:#4b5a1f;--line:#a8892a;
   --card:rgba(255,255,255,.55);--glow:rgba(168,137,42,.4);--artbg:#e9eed6;--c1:#8a9a5b;--c2:#c9b062;--c3:#6b7a3a;
@@ -289,9 +283,8 @@ section{position:relative;z-index:1;min-height:100svh;display:flex;flex-directio
 
 /* ================= PHASE 3.1: CARICATURES AS FULL-BLEED BACKGROUNDS (Events 1, 2, 6, 8) ================= */
 .ev-head,.ev-foot{display:flex;flex-direction:column;align-items:center;width:100%}
-.has-bg{min-height:max(130svh,860px);justify-content:stretch;padding-top:5.2rem;padding-bottom:3.6rem}
+.has-bg{min-height:max(118svh,880px);justify-content:stretch;padding-top:5.2rem;padding-bottom:3.6rem}
 .has-bg .ev-inner{flex:1;justify-content:space-between}
-.has-bg.ev1{padding-top:6rem}
 
 /* the picture itself: edge to edge, behind all text, nothing around it */
 .ev-bg{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;z-index:0;
@@ -308,10 +301,8 @@ section{position:relative;z-index:1;min-height:100svh;display:flex;flex-directio
 .has-bg .fx,.has-bg .beam{z-index:1}
 .has-bg .fl{display:none}
 .has-bg .vine{opacity:.75}
-.has-bg.ev1{--dk:58,20,6;--tint:rgba(244,162,58,.10);--pos:50% 45%}
-.has-bg.ev2{--dk:2,18,12;--tint:rgba(8,70,50,.14);--pos:50% 45%}
-.has-bg.ev6{--dk:30,38,10;--tint:rgba(98,118,50,.12);--pos:50% 45%}
-.has-bg.ev8{--dk:58,12,28;--tint:rgba(122,31,58,.08);--pos:50% 45%}
+.has-bg.ev2{--dk:1,28,18;--tint:rgba(6,78,54,.22);--pos:50% 45%}
+.has-bg.ev6{--dk:30,44,12;--tint:rgba(104,128,56,.20);--pos:58% 50%}
 
 /* text sits directly on the picture: light colours + soft shadows, no boxes */
 .has-bg{--line:rgba(246,226,166,.6)}
@@ -325,3 +316,23 @@ section{position:relative;z-index:1;min-height:100svh;display:flex;flex-directio
 .has-bg .ev-details dd{color:#fff8ee;text-shadow:0 2px 6px rgba(0,0,0,.85),0 0 14px rgba(0,0,0,.45)}
 .has-bg .vows-names{color:#fff6dc;text-shadow:0 2px 8px rgba(0,0,0,.75)}
 .has-bg .vows-line{color:#f6e2a6;text-shadow:0 2px 6px rgba(0,0,0,.8)}
+
+.ev-kicker{font-style:italic;font-weight:600;margin-top:.5rem;font-size:clamp(1.15rem,5vw,1.4rem);color:#f6e2a6;text-shadow:0 2px 6px rgba(0,0,0,.8)}
+
+/* ================= PHASE 3.3: NEW BACKGROUND PICTURES (Carnival, Hina Hues, Eternal Vows) ================= */
+/* Carnival: rust-orange tint over haldi-background.png */
+.has-bg.ev1{--dk:58,20,6;--tint:rgba(232,114,12,.10);--pos:50% 50%}
+/* Eternal Vows: light ivory/blush overlay, dark wine text, taller section so the sacred fire and gathbandhan knot stay visible */
+.has-bg.ev8{--tint:rgba(251,227,229,.10);--pos:50% 50%;--line:rgba(122,31,58,.4);min-height:max(170svh,1400px);padding-top:15rem;padding-bottom:4rem}
+.has-bg.ev8 .ev-inner{flex:0 0 auto;justify-content:flex-start;gap:1.4rem}
+.has-bg.ev8::before{background:
+  radial-gradient(ellipse at 50% 30%,rgba(255,248,238,.5),rgba(251,227,229,.2) 55%,transparent 78%),
+  linear-gradient(180deg,rgba(255,244,232,.4) 0,rgba(255,244,232,.1) 26%,transparent 46%),var(--tint)}
+.has-bg.ev8 .fx{opacity:.55}
+.has-bg.ev8 .ev-title{color:#5c1426;text-shadow:0 0 14px rgba(255,248,238,.95),0 1px 2px rgba(255,248,238,.9)}
+.has-bg.ev8 .ev-sub{color:#7a1f3a;text-shadow:0 0 12px rgba(255,248,238,.95),0 1px 2px rgba(255,248,238,.9)}
+.has-bg.ev8 .ev-orn{color:#9a6a1a;filter:drop-shadow(0 0 4px rgba(255,248,238,.9))}
+.has-bg.ev8 .ev-details dt{color:#7a1f3a;text-shadow:0 0 10px rgba(255,248,238,.95)}
+.has-bg.ev8 .ev-details dd{color:#3a0f1b;text-shadow:0 0 12px rgba(255,248,238,.95),0 1px 2px rgba(255,248,238,.8)}
+.has-bg.ev8 .vows-names{color:#5c1426;text-shadow:0 0 14px rgba(255,248,238,.95),0 1px 2px rgba(255,248,238,.9)}
+.has-bg.ev8 .vows-line{color:#7a1f3a;text-shadow:0 0 12px rgba(255,248,238,.95),0 1px 2px rgba(255,248,238,.9)}
